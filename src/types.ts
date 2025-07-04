@@ -1,13 +1,29 @@
-import { DateTime, Str } from "chanfana";
+import { DateTime, Enumeration, Str } from "chanfana";
 import type { Context } from "hono";
-import { z } from "zod";
+import { number, z } from "zod";
 
 export type AppContext = Context<{ Bindings: Env }>;
 
-export const Task = z.object({
-	name: Str({ example: "lorem" }),
-	slug: Str(),
-	description: Str({ required: false }),
-	completed: z.boolean().default(false),
-	due_date: DateTime(),
-});
+
+export const CakeOrderInput = z.object({
+	name: Str({ example: "cake_order", required: true}),
+	description: Str({ required: true}),
+})
+
+export const CakeOrderUpdate = z.object({
+	orderNum: number(),
+	name: Str({ example: "cake_order", required: true}),
+	description: Str({ required: true}),
+})
+
+
+export const CakeOrder = z.object({
+	name: Str({ example: "cake_order", required: true}),
+	description: Str({ required: true}),
+	state: z.enum(["New", "InProgress", "Completed"]),
+	orderNum: number(),
+})
+
+
+
+export const OrderToSend = z.number()
