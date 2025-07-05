@@ -8,6 +8,7 @@ export class CakeList extends OpenAPIRoute {
 		summary: "Lists all Cakes",
 		request: {
 
+
 		},
 		responses: {
 			"200": {
@@ -24,6 +25,9 @@ export class CakeList extends OpenAPIRoute {
 						}),
 					},
 				},
+			},
+			"401": {
+				description: "Invalid API Key"
 			},
 		},
 	};
@@ -44,11 +48,8 @@ export class CakeList extends OpenAPIRoute {
 		// return the new order
 		return {
 			success: true,
-			order: {
-				//name: orderToCreate.name,
-				//description: orderToCreate.description,
-				state: state,
-				orderNum: orderNumber
+			orders: {
+				order: "all orders"
 			},
 		};
 	}

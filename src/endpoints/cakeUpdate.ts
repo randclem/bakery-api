@@ -31,6 +31,9 @@ export class CakeUpdate extends OpenAPIRoute {
 					},
 				},
 			},
+			"401": {
+				description: "Invalid API Key (Bearer token)"
+			},
 		},
 	};
 

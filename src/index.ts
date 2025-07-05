@@ -1,10 +1,17 @@
 import { fromHono } from "chanfana";
 import { Hono } from "hono";
+import { bearerAuth } from "hono/bearer-auth";
+import { prettyJSON } from "hono/pretty-json";
+import { logger } from "hono/logger";
 import { CakePrep } from "./endpoints/cakePrep";
 import { CakeBake } from "./endpoints/cakeBake";
 import { CakeList } from "./endpoints/cakeList";
 import { CakeUpdate } from "./endpoints/cakeUpdate";
 import { CakeDelete } from "./endpoints/cakeDelete";
+
+type Env = {
+  API_KEY: string;
+};
 
 // Start a Hono app
 const app = new Hono<{ Bindings: Env }>();
@@ -12,6 +19,11 @@ const app = new Hono<{ Bindings: Env }>();
 // Setup OpenAPI registry
 const openapi = fromHono(app, {
 	docs_url: "/",
+});
+
+app.use("*", prettyJSON(), logger(), async (c, next) => {
+  const auth = bearerAuth({ token: c.env.API_KEY });
+  return auth(c, next);
 });
 
 // Register OpenAPI endpoints
