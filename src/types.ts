@@ -29,6 +29,10 @@ export const CakeOrder = z.object({
 	orderNum: number(),
 })
 
+export type CakeRecipeDBReturn = {
+	name: string,
+	description: string
+}
 
 
 export const OrderToSend = z.number()
