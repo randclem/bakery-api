@@ -4,6 +4,7 @@ import { number, z } from "zod";
 
 type Env = {
 	DB: D1Database;
+	AI: Ai;
 }
 
 export type AppContext = Context<{ Bindings: Env }>;

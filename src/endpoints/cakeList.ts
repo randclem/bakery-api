@@ -41,9 +41,9 @@ export class CakeList extends OpenAPIRoute {
 			// }
 		
 
-		const result = await stmt.run();
+			const result = await stmt.run();
 
-		return c.json(result);
+			return c.json(result);
 
 		} catch (err)  {
 			return c.json({ error: `Failed to run query: ${err}`}, 500);

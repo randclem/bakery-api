@@ -17,8 +17,8 @@ const openapi = fromHono(app, {
 // Register OpenAPI endpoints
 openapi.post("/api/cake/prep", CakePrep);
 openapi.get("/api/cake/all", CakeList);
-openapi.put("/api/cake/update/", CakeUpdate);
-openapi.delete("api/cake/remove/:cakeId", CakeDelete);
+openapi.post("/api/cake/update", CakeUpdate);
+openapi.delete("/api/cake/remove/:cakeId", CakeDelete);
 //openapi.get("/api/bake/:orderId", CakeOrder);
 openapi.post("/api/cake/bake", CakeBake);
 // You may also register routes for non OpenAPI directly on Hono
