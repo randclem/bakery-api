@@ -2,6 +2,10 @@ import { DateTime, Enumeration, Str } from "chanfana";
 import type { Context } from "hono";
 import { number, z } from "zod";
 
+type Env = {
+	DB: D1Database;
+}
+
 export type AppContext = Context<{ Bindings: Env }>;
 
 
