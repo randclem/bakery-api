@@ -49,5 +49,15 @@
 
 	"ai": {
 		"binding": "AI"
-	}
+	},
+
+
+  	"d1_databases": [
+    	{
+      "binding": "DB",
+      "database_name": "bakery-api-d1",
+      "database_id": "69d847bb-5aa5-48e7-9708-496f0316a74a"
+    	}
+  	]
+
 }
