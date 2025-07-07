@@ -41,7 +41,6 @@ export class CakePrep extends OpenAPIRoute {
 		try {
 			// Get validated data
 			const data = await this.getValidatedData<typeof this.schema>();
-			//let { params } = await c.req.json();
 			let query = 'INSERT INTO cakes (name, description, state) VALUES (?, ?, ?)';
 			let stmt = c.env.DB.prepare(query);
 			if (data) {
@@ -54,16 +53,5 @@ export class CakePrep extends OpenAPIRoute {
 		} catch (err) {
 			return c.json({ error: `Failed to run query: ${err}`}, 500);
 		}
-
-		// return the new order
-		// return {
-		// 	success: true,
-		// 	order: {
-		// 		name: orderToCreate.name,
-		// 		description: orderToCreate.description,
-		// 		state: state,
-		// 		orderNum: orderNumber
-		// 	},
-		// };
 	}
 }

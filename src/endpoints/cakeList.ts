@@ -33,13 +33,9 @@ export class CakeList extends OpenAPIRoute {
 		const data = await this.getValidatedData<typeof this.schema>();
 
 		try {
-			//let { params } = await c.req.json();
 			let query = 'SELECT name, description, state, id AS orderNum FROM cakes' 
 			let stmt = c.env.DB.prepare(query);
-			// if (params) {
-			// 	stmt = stmt.bind(params);
-			// }
-		
+
 
 			const result = await stmt.run();
 
@@ -48,16 +44,5 @@ export class CakeList extends OpenAPIRoute {
 		} catch (err)  {
 			return c.json({ error: `Failed to run query: ${err}`}, 500);
 		}
-
-		// return the new order
-		// return {
-		// 	success: true,
-		// 	order: {
-		// 		name: orderToCreate.name,
-		// 		description: orderToCreate.description,
-		// 		state: state,
-		// 		orderNum: orderNumber
-		// 	},
-		// };
 	}
 }

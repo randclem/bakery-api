@@ -37,11 +37,8 @@ export class CakeBakeFromRecipe extends OpenAPIRoute {
 			}
 
 			const result = await stmt.run<CakeRecipeDBReturn>()
-			// console.log(stmt);
-			// console.log(result)
 			let cake_desc = result.results[0].description + " in the form of a cake jello";
 
-			// console.log(cake_desc);
 			const inputs = {
 				prompt: cake_desc,
 			};
@@ -60,8 +57,5 @@ export class CakeBakeFromRecipe extends OpenAPIRoute {
 		} catch (err)  {
 			return c.json({ error: `Failed to run query: ${err}`}, 500);
 		}
-
-		
-		
 	}
 }  

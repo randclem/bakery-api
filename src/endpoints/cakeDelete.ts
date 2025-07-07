@@ -43,16 +43,5 @@ export class CakeDelete extends OpenAPIRoute {
 		} catch (err) {
 			return c.json({ error: `Failed to run query: ${err}`}, 500);
 		}
-
-		// // return the new order
-		// return {
-		// 	success: true,
-		// 	// order: {
-		// 	// 	//name: orderToCreate.name,
-		// 	// 	//description: orderToCreate.description,
-		// 	// 	state: state,
-		// 	// 	orderNum: orderNumber
-		// 	// },
-		// };
 	}
 }
