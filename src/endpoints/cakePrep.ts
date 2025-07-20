@@ -31,6 +31,9 @@ export class CakePrep extends OpenAPIRoute {
 					},
 				},
 			},
+			"401": {
+				description: "Invalid API Key (Bearer token)"
+			},
 		},
 	};
 

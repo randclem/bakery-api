@@ -22,6 +22,9 @@ export class CakeDelete extends OpenAPIRoute {
 					},
 				},
 			},
+			"401": {
+				description: "Invalid API Key (Bearer token)"
+			},
 		},
 	};
 

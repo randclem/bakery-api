@@ -8,6 +8,7 @@ export class CakeList extends OpenAPIRoute {
 		summary: "Lists all Cakes",
 		request: {
 
+
 		},
 		responses: {
 			"200": {
@@ -24,6 +25,9 @@ export class CakeList extends OpenAPIRoute {
 						}),
 					},
 				},
+			},
+			"401": {
+				description: "Invalid API Key"
 			},
 		},
 	};
