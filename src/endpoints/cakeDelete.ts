@@ -29,27 +29,22 @@ export class CakeDelete extends OpenAPIRoute {
 	};
 
 	async handle(c: AppContext) {
-		// Get validated data
-		const data = await this.getValidatedData<typeof this.schema>();
+		
+		try {
+			// Get validated data
+			const data = await this.getValidatedData<typeof this.schema>();
 
-		// Retrieve the validated request body
-		//const orderToCreate = data.body;
+			let query = 'DELETE from cakes WHERE id = ?';
+			let stmt = c.env.DB.prepare(query);
+			if (data) {
+				stmt = stmt.bind(data.params.cakeId);
+			}
 
-		// Implement your own object insertion here
-		// todo create ordernumber logic
-		let orderNumber = 1;
-		// todo create state update logic
-		let state = "New"
+			const result = await stmt.run();
 
-		// return the new order
-		return {
-			success: true,
-			// order: {
-			// 	//name: orderToCreate.name,
-			// 	//description: orderToCreate.description,
-			// 	state: state,
-			// 	orderNum: orderNumber
-			// },
-		};
+			return c.json(result);
+		} catch (err) {
+			return c.json({ error: `Failed to run query: ${err}`}, 500);
+		}
 	}
 }

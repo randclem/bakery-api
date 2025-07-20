@@ -2,6 +2,11 @@ import { DateTime, Enumeration, Str } from "chanfana";
 import type { Context } from "hono";
 import { number, z } from "zod";
 
+type Env = {
+	DB: D1Database;
+	AI: Ai;
+}
+
 export type AppContext = Context<{ Bindings: Env }>;
 
 
@@ -24,6 +29,10 @@ export const CakeOrder = z.object({
 	orderNum: number(),
 })
 
+export type CakeRecipeDBReturn = {
+	name: string,
+	description: string
+}
 
 
 export const OrderToSend = z.number()
