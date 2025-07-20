@@ -6,6 +6,10 @@ export class CakeUpdate extends OpenAPIRoute {
 	schema = {
 		tags: ["Orders"],
 		summary: "Updates a Cake",
+		description: "Updates a Cake Order by its ID",
+		security: [{
+			bearerAuth: []
+		}],
 		request: {
 			body: {
 				content: {

@@ -7,6 +7,10 @@ export class CakeBake extends OpenAPIRoute {
 	schema = {
 		tags: ["Orders"],
 		summary: "Sends an order to be baked",
+		description: "Sends an order to be baked by the AI",
+		security: [{
+			bearerAuth: []
+		}],
 		request: {
             body: {
 				content: {

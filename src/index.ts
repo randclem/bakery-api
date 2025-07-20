@@ -22,10 +22,21 @@ const openapi = fromHono(app, {
 	docs_url: "/",
 });
 
+
 app.use("*", prettyJSON(), logger(), async (c, next) => {
   const auth = bearerAuth({ token: c.env.API_KEY });
   return auth(c, next);
 });
+
+openapi.registry.registerComponent(
+  'securitySchemes',
+  'bearerAuth',
+  {
+    type: 'http',
+    scheme: 'bearer',
+    bearerFormat: 'token',
+  },
+)
 
 // Register OpenAPI endpoints
 openapi.post("/api/cake/prep", CakePrep);

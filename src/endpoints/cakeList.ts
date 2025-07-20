@@ -6,9 +6,11 @@ export class CakeList extends OpenAPIRoute {
 	schema = {
 		tags: ["Orders"],
 		summary: "Lists all Cakes",
+		description: "Lists all Cakes with their details",
+		security: [{
+			bearerAuth: []
+		}],
 		request: {
-
-
 		},
 		responses: {
 			"200": {

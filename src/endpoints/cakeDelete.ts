@@ -6,10 +6,14 @@ export class CakeDelete extends OpenAPIRoute {
 	schema = {
 		tags: ["Orders"],
 		summary: "Deletes a Cake Order",
+		description: "Deletes a Cake Order by its ID",
+		security: [{
+			bearerAuth: []
+		}],
 		request: {
 			params: z.object({
 				cakeId: z.string()
-			}),
+			}).required(),
 		},
 		responses: {
 			"200": {

@@ -6,6 +6,10 @@ export class CakePrep extends OpenAPIRoute {
 	schema = {
 		tags: ["Orders"],
 		summary: "Create a new Cake Recipe",
+		description: "Creates a new Cake Recipe to be baked",
+		security: [{
+			bearerAuth: []
+		}],
 		request: {
 			body: {
 				content: {

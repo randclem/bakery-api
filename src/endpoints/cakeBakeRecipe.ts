@@ -7,6 +7,10 @@ export class CakeBakeFromRecipe extends OpenAPIRoute {
 	schema = {
 		tags: ["Orders"],
 		summary: "Sends an order to be baked",
+		description: "Sends an order to be baked by the AI using a recipe ID",
+		security: [{
+			bearerAuth: []
+		}],
 		request: {
             params: z.object({
 				cakeId: z.number()
@@ -20,6 +24,9 @@ export class CakeBakeFromRecipe extends OpenAPIRoute {
 						schema: z.any()
 					},
 				},
+			},
+			"401": {
+				description: "Invalid API Key (Bearer token)"
 			},
 		},
 	};
